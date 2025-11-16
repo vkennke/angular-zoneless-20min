@@ -35,10 +35,10 @@ layout: center
 
 <v-clicks>
 
-- 🔄 **Fundamentaler Richtungswechsel** in Angular (v16+)
-- ⚡ **Performance-Revolution** durch gezieltes Update-System
-- 🧠 **Neue Denkweise** erforderlich
-- 📦 Möglicherweise **unbemerkt** an vielen vorbei gegangen
+- **Fundamentaler Richtungswechsel** in Angular (v16+)
+- **Performance-Revolution** durch gezieltes Update-System
+- **Neue Denkweise** erforderlich
+- Möglicherweise **unbemerkt** an vielen vorbei gegangen
 
 </v-clicks>
 
@@ -122,10 +122,10 @@ Schauen wir uns erst mal an, wie es bisher funktioniert hat.
 
 <v-clicks>
 
-- 📝 **Monkey-Patches** alle async APIs (setTimeout, events, HTTP, ...)
-- 👀 **Überwacht** automatisch alle Async-Operationen
-- 🔔 **Benachrichtigt** Angular über potenzielle Änderungen
-- 🔄 **Triggert** Change Detection für die gesamte Component-Tree
+- **Monkey-Patches** alle async APIs (setTimeout, events, HTTP, ...)
+- **Überwacht** automatisch alle Async-Operationen
+- **Benachrichtigt** Angular über potenzielle Änderungen
+- **Triggert** Change Detection für die gesamte Component-Tree
 
 </v-clicks>
 
@@ -310,10 +310,10 @@ Mit Zoneless haben wir endlich Kontrolle darüber.
 
 > "Framework, mach du mal!"
 
-- ❌ Keine Kontrolle
-- ❌ Performance-Overhead
-- ✅ Einfach für Anfänger
-- ✅ Weniger Code
+❌ Keine Kontrolle  
+❌ Performance-Overhead  
+✅ Einfach für Anfänger  
+✅ Weniger Code
 
 </div>
 
@@ -323,10 +323,10 @@ Mit Zoneless haben wir endlich Kontrolle darüber.
 
 > "Ich sage dir genau, was sich ändert"
 
-- ✅ Volle Kontrolle
-- ✅ Optimale Performance
-- ✅ Vorhersagbar
-- ⚠️ Steile Lernkurve
+✅ Volle Kontrolle  
+✅ Optimale Performance  
+✅ Vorhersagbar  
+⚠️ Steile Lernkurve
 
 </div>
 
@@ -369,10 +369,10 @@ console.log(count());  // 6
 
 <v-clicks>
 
-- 📦 **Wrapper** um einen reaktiven Wert
-- 📖 Lesen mit `()`
-- ✍️ Schreiben mit `.set()` oder `.update()`
-- 🔔 Angular weiß **genau**, was sich geändert hat
+- **Wrapper** um einen reaktiven Wert
+- Lesen mit `()`
+- Schreiben mit `.set()` oder `.update()`
+- Angular weiß **genau**, was sich geändert hat
 
 </v-clicks>
 
@@ -506,10 +506,10 @@ bootstrapApplication(AppComponent, {
 
 <v-clicks>
 
-- 🎯 Seit Angular 18 experimentell verfügbar
-- ✅ **Stable seit Angular 19** (November 2024)
-- 📦 Zone.js wird nicht mehr geladen
-- ⚡ Nur Signals, Async Pipe & explizite `markForCheck()` triggern Updates
+- Seit Angular 18 experimentell verfügbar
+- **Stable seit Angular 19** (November 2024)
+- Zone.js wird nicht mehr geladen
+- Nur Signals, Async Pipe & explizite `markForCheck()` triggern Updates
 
 </v-clicks>
 
@@ -535,24 +535,24 @@ layout: section
 
 <div>
 
-## ✅ Vorteile
+## Vorteile
 
-- Einfach für Einsteiger
-- Weniger Boilerplate
-- "Es funktioniert einfach"
-- Bewährte Lösung (seit Angular 2)
+✅ Einfach für Einsteiger  
+✅ Weniger Boilerplate  
+✅ "Es funktioniert einfach"  
+✅ Bewährte Lösung (seit Angular 2)
 
 </div>
 
 <div>
 
-## ❌ Nachteile
+## Nachteile
 
-- Performance-Overhead
-- Unvorhersagbares Verhalten
-- Schwer zu debuggen
-- Größere Bundle-Size
-- Prüft gesamten Tree
+❌ Performance-Overhead  
+❌ Unvorhersagbares Verhalten  
+❌ Schwer zu debuggen  
+❌ Größere Bundle-Size  
+❌ Prüft gesamten Tree
 
 </div>
 
@@ -571,24 +571,24 @@ Aber die Nachteile wiegen schwer bei größeren Anwendungen.
 
 <div>
 
-## ✅ Vorteile
+## Vorteile
 
-- 🚀 Deutlich bessere Performance
-- 🎯 Präzise Updates (fine-grained)
-- 📉 Kleinere Bundle-Size
-- 🔮 Vorhersagbar & debuggbar
-- 🌍 Aligned mit modernen Standards
+✅ 🚀 Deutlich bessere Performance  
+✅ Präzise Updates (fine-grained)  
+✅ Kleinere Bundle-Size  
+✅ Vorhersagbar & debuggbar  
+✅ Aligned mit modernen Standards
 
 </div>
 
 <div>
 
-## ❌ Nachteile
+## Nachteile
 
-- Steile Lernkurve
-- Mehr Code zu schreiben
-- Migration bestehender Apps aufwändig
-- Breaking Change für viele Patterns
+❌ Steile Lernkurve  
+❌ Mehr Code zu schreiben  
+❌ Migration bestehender Apps aufwändig  
+❌ Breaking Change für viele Patterns
 
 </div>
 
@@ -661,14 +661,39 @@ class FullyModernComponent {
 
 </v-click>
 
-<v-click>
-
-💡 **Tipp:** Apps mit `OnPush` Change Detection Strategy migrieren leichter zu Zoneless - das kann ein guter Zwischenschritt sein!
-
-</v-click>
-
 <!--
 Wichtig für die Migration: Ihr müsst nicht alles auf einmal umstellen.
+Inkrementelle Migration ist möglich und sinnvoll.
+-->
+
+---
+
+# Migration Tipps
+
+<v-clicks>
+
+💡 **OnPush als Zwischenschritt**  
+Apps mit `OnPush` Change Detection Strategy migrieren leichter zu Zoneless - das kann ein guter Zwischenschritt sein!
+
+🔧 **Automatisierte Migration**  
+Angular bietet Schematics für Signal Inputs und Signal Queries:
+```bash
+ng generate @angular/core:signal-input-migration
+ng generate @angular/core:signal-queries-migration
+```
+
+📦 **Schrittweise vorgehen**
+- Neue Features mit Signals entwickeln
+- Kritische Pfade zuerst migrieren
+- Tests nicht vergessen!
+
+</v-clicks>
+
+<!--
+Die automatisierten Migrations-Schematics sind ein Gamechanger!
+Signal Inputs und ViewChild/ContentChild werden automatisch konvertiert.
+Das spart sehr viel manuelle Arbeit.
+
 OnPush als Zwischenschritt ist clever - dann habt ihr schon bewusste Change Detection.
 Von OnPush zu Zoneless ist dann ein kleinerer Schritt.
 -->
@@ -685,14 +710,14 @@ layout: section
 
 <v-clicks>
 
-- ✅ **Angular 19** (November 2024): Signals & Zoneless sind **stable**
-- ✅ **Angular 20** (Mai 2025): Weitere Optimierungen und Performance-Verbesserungen
+- **Angular 19** (November 2024): Signals & Zoneless sind **stable**
+- **Angular 20** (Mai 2025): Weitere Optimierungen und Performance-Verbesserungen
 - 🎉 **Angular 21** (November 2025, gerade erschienen!):
     - **Signal Forms** als neuer Standard
     - **Zoneless ist jetzt der Default**
     - Zone.js nur noch opt-in für Legacy-Apps
-- 🔄 Immer mehr APIs werden Signal-basiert (Router, HttpClient, etc.)
-- 🌟 Angular ist vollständig auf **Fine-grained Reactivity** umgestellt
+- Immer mehr APIs werden Signal-basiert (Router, HttpClient, etc.)
+- Angular ist vollständig auf **Fine-grained Reactivity** umgestellt
 
 **Signals sind nicht mehr die Zukunft - sie sind die Gegenwart!**
 
@@ -775,10 +800,7 @@ class: text-center
 <div class="pt-12 flex items-center justify-center gap-8">
   <div>
     <div class="text-sm opacity-70 mb-2">Slides verfügbar unter:</div>
-    <figure>
-        <img src="/qr-code.svg" alt="QR Code zum Git Repository" class="w-40 h-40 mx-auto" />
-        <figcaption>https://tinyurl.com/ng-zoneless</figcaption>
-    </figure>
+    <img src="/qr-code.svg" alt="QR Code zum Git Repository" class="w-40 h-40 mx-auto" />
   </div>
 </div>
 
