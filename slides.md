@@ -384,7 +384,7 @@ Gewöhnungsbedürftig, aber sehr mächtig.
 
 # Computed Signals
 
-```typescript {all|2-3|5-9|11-14|all}
+```typescript {all|3|5-9|11-14|all}
 @Component({...})
 class ShoppingCart {
     items = signal<Item[]>([]);
@@ -574,7 +574,7 @@ Aber die Nachteile wiegen schwer bei größeren Anwendungen.
 
 ## Vorteile
 
-✅ 🚀 Deutlich bessere Performance  
+✅ Deutlich bessere Performance  
 ✅ Präzise Updates (fine-grained)  
 ✅ Kleinere Bundle-Size  
 ✅ Vorhersagbar & debuggbar  
@@ -614,9 +614,13 @@ Aber: Es lohnt sich!
 ✅ **Performance-kritische Apps**: Große Anwendungen profitieren enorm
 
 ⚠️ **Bestehende Apps**: Schrittweise Migration möglich
-- Beide Ansätze können koexistieren
-- Neue Components mit Signals schreiben
-- Alte Components nach und nach migrieren
+<div class="ml-7">
+<ul>
+<li>Beide Ansätze können koexistieren</li>
+<li>Neue Components mit Signals schreiben</li>
+<li>Alte Components nach und nach migrieren</li>
+</ul>
+</div>
 
 ❌ **Kleine, einfache Apps**: Migration-Aufwand eventuell nicht gerechtfertigt
 
