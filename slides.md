@@ -130,19 +130,6 @@ Schauen wir uns erst mal an, wie es bisher funktioniert hat.
 
 </v-clicks>
 
-<v-click>
-
-```typescript
-// Zone.js wrapped event listener
-button.addEventListener('click', () => {
-    this.data = 'Neu';
-    // Zone.js merkt: "Event handler fertig!"
-    // → Führt Change Detection aus
-});
-```
-
-</v-click>
-
 <!--
 Zone.js ist die "Magie" hinter Angular's automatischer Change Detection.
 Es patcht alle Browser-APIs zur Laufzeit - addEventListener, setTimeout, Promises, etc.
@@ -336,7 +323,7 @@ console.log(count());  // 6
     <li v-click="1"><b>Wrapper</b> um einen reaktiven Wert</li>
     <li v-click="2">Lesen mit <code>()</code></li>
     <li v-click="4">Schreiben mit <code>.set()</code> oder <code>.update()</code></li>
-    <li v-click="4">Signals kennt seine Consumer um sie gezielt über Änderungen zu informieren</li>
+    <li v-click="5">Signal kennt seine Consumer um sie gezielt über Änderungen zu informieren</li>
 </ul>
 
 <!--
@@ -738,7 +725,6 @@ layout: section
     - **Zoneless ist jetzt der Default**
     - Zone.js nur noch opt-in für Legacy-Apps
 - Immer mehr APIs werden Signal-basiert (Router, HttpClient, etc.)
-- Angular ist vollständig auf **Fine-grained Reactivity** umgestellt
 
 **Signals sind nicht mehr die Zukunft - sie sind die Gegenwart!**
 
