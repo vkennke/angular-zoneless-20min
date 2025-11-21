@@ -336,12 +336,27 @@ console.log(count());  // 6
     <li v-click="1"><b>Wrapper</b> um einen reaktiven Wert</li>
     <li v-click="2">Lesen mit <code>()</code></li>
     <li v-click="4">Schreiben mit <code>.set()</code> oder <code>.update()</code></li>
+    <li v-click="4">Signals kennt seine Consumer um sie gezielt über Änderungen zu informieren</li>
 </ul>
 
 <!--
 Signals sind das Herzstück von Zoneless Angular.
 Ein Signal ist ein Wrapper um einen Wert - Angular weiß exakt, wann sich dieser Wert ändert.
 Lesen mit Klammern, schreiben mit set/update.
+
+WICHTIG: Wer sich jetzt fragt: Wie weiß Angular was aktualisiert werden muss?
+Der Dependency-Graph wird ZUR LAUFZEIT erstellt!
+Wenn ein Signal im Template gelesen wird ({{ count() }}), registriert sich das Template als "Consumer".
+Angular baut dynamisch einen Graph: Signal → Template/Computed/Effect.
+Bei userId.set(newId) werden nur die registrierten Consumer benachrichtigt und aktualisiert.
+
+Warum zur Laufzeit? Weil es flexibel sein muss:
+- @if Bedingungen: Consumer wird nur registriert wenn Bedingung true ist
+- Computed Chains: Abhängigkeiten können sich zur Laufzeit ändern
+- Effects: Werden nur registriert wenn sie ausgeführt werden
+
+Das ist der Kern von Fine-grained Reactivity!
+Gewöhnungsbedürftig, aber sehr mächtig.
 -->
 
 ---
@@ -411,27 +426,15 @@ class UserProfile {
 <!--
 Effects sind für Seiteneffekte - Logging, Analytics, API-Calls.
 Der Effect läuft automatisch, wenn sich userId ändert.
-
-WICHTIG: Wer sich jetzt fragt: Wie weiß Angular was aktualisiert werden muss?
-Der Dependency-Graph wird ZUR LAUFZEIT erstellt!
-Wenn ein Signal im Template gelesen wird ({{ count() }}), registriert sich das Template als "Consumer".
-Angular baut dynamisch einen Graph: Signal → Template/Computed/Effect.
-Bei userId.set(newId) werden nur die registrierten Consumer benachrichtigt und aktualisiert.
-
-Warum zur Laufzeit? Weil es flexibel sein muss:
-- @if Bedingungen: Consumer wird nur registriert wenn Bedingung true ist
-- Computed Chains: Abhängigkeiten können sich zur Laufzeit ändern
-- Effects: Werden nur registriert wenn sie ausgeführt werden
-
-Das ist der Kern von Fine-grained Reactivity!
-Gewöhnungsbedürftig, aber sehr mächtig.
 -->
 
+---
+clicks: 7
 ---
 
 # Async Resources
 <div class="relative">
-<div v-click-hide="6" class="absolute">
+<div v-show="$slidev.nav.clicks < 6" class="absolute">
 
 ```typescript {all|17-21|3-4|5-6|7-13|19-21}{maxHeight:'412px'}
 @Component({
@@ -460,7 +463,7 @@ class UserList {
 
 </div>
 
-<div v-click="6" v-click-hide="7" class="absolute">
+<div v-show="$slidev.nav.clicks === 6" class="absolute">
 
 ```typescript {17-21}{maxHeight:'412px'}
 @Component({
@@ -489,7 +492,7 @@ class UserList {
 
 </div>
 
-<div v-click="7" class="absolute">
+<div v-show="$slidev.nav.clicks >= 7" class="absolute initially-hidden">
 
 ```typescript {17-19}{maxHeight:'412px'}
 @Component({
@@ -690,6 +693,7 @@ Inkrementelle Migration ist möglich und sinnvoll.
 <v-clicks>
 
 💡 **OnPush als Zwischenschritt**  
+Verwendet eine Komponente nur Signals, Resources oder Async Pipes ist sie `OnPush` kompatibel. <br/>
 Apps mit `OnPush` Change Detection Strategy migrieren leichter zu Zoneless - das kann ein guter Zwischenschritt sein!
 
 🔧 **Automatisierte Migration**  
